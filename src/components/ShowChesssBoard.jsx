@@ -3,7 +3,7 @@ import './Style.css'
 
 function ShowChesssBoard() {
     const cols = 8, rows = 8;
-
+ 
     var chessboard = [];
     let temp = 0;
 
