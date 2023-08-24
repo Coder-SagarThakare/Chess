@@ -1,0 +1,15 @@
+.col {
+     /* Each column takes 12.5% of the container's width (8 columns total) */
+    height: 100%;
+    /* padding-top: calc(12.5% - 2px); */
+    /* max-width: 12.5%; */
+    /* padding: 0; */
+}
+.box{
+    flex: 0 0 12.5%;
+    height: 85px;
+}
+
+.chessboard{
+    width: 680px;
+}
