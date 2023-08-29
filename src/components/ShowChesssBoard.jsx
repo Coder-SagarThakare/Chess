@@ -11,22 +11,15 @@ function ShowChesssBoard() {
 
     // change the background color of selected pawn
     var setPawn = (className, e) => {
-
         if (prevSelectedPawn) {
             prevSelectedPawn.style.backgroundColor = prevSelectedPawnBgColor
-
-            var box = document.getElementsByClassName(className)[0]
-            prevSelectedPawnBgColor = box.style.backgroundColor
-            box.style.backgroundColor = '#70CAE0'
-
-            prevSelectedPawn = box;
-        } else {
-            var box = document.getElementsByClassName(className)[0]
-            prevSelectedPawnBgColor = box.style.backgroundColor
-            box.style.backgroundColor = '#70CAE0'
-            prevSelectedPawn = box;
         }
-        // box.classList?.add('sagar')
+        var box = document.getElementsByClassName(className)[0]
+        prevSelectedPawnBgColor = box.style.backgroundColor
+        box.style.backgroundColor = '#70CAE0'
+
+
+        prevSelectedPawn = box;
     }
 
     for (let row = 1; row <= rows; row++) {
