@@ -1,15 +1,108 @@
 .col {
-     /* Each column takes 12.5% of the container's width (8 columns total) */
+    /* Each column takes 12.5% of the container's width (8 columns total) */
     height: 100%;
-    /* padding-top: calc(12.5% - 2px); */
-    /* max-width: 12.5%; */
-    /* padding: 0; */
 }
-.box{
+
+.box-size {
     flex: 0 0 12.5%;
     height: 85px;
 }
 
-.chessboard{
+.chessboard {
     width: 680px;
+}
+.pointer:hover{
+    cursor: pointer;
+}
+
+/* black pawn */
+.box11,
+.box12,
+.box13,
+.box14,
+.box15,
+.box16,
+.box17,
+.box18,
+.box21,
+.box22,
+.box23,
+.box24,
+.box25,
+.box26,
+.box27,
+.box28 {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url('../images/bp.png');
+    cursor: pointer;
+}
+
+.box11,
+.box18 {
+    background-image: url('../images/br.png');
+}
+
+.box12,
+.box17 {
+    background-image: url('../images/bn.png');
+}
+
+.box13,
+.box16 {
+    background-image: url('../images/bb.png');
+}
+
+.box14 {
+    background-image: url('../images/bq.png');
+}
+
+.box15 {
+    background-image: url('../images/bk.png');
+}
+
+/* white */
+.box71,
+.box72,
+.box73,
+.box74,
+.box75,
+.box76,
+.box77,
+.box78,
+.box81,
+.box82,
+.box83,
+.box84,
+.box85,
+.box86,
+.box87,
+.box88 {
+    background-image: url('../images/wp.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.box81,
+.box88 {
+    background-image: url('../images/wr.png');
+}
+
+.box82,
+.box87 {
+    background-image: url('../images/wn.png');
+}
+
+.box83,
+.box86 {
+    background-image: url('../images/wb.png');
+}
+
+.box84 {
+    background-image: url('../images/wq.png');
+}
+
+.box85 {
+    background-image: url('../images/wk.png');
 }
