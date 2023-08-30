@@ -1,48 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Style.css'
 
 function ShowChesssBoard() {
+
     const cols = 8, rows = 8;
-    var prevSelectedPawn = undefined
-    var prevSelectedPawnBgColor = undefined
-    var chessboard = [];
-    let temp = 0;
+    const [selectedBox, setSelectedBox] = useState(null);
 
-
-    // change the background color of selected pawn
-    var setPawn = (className, e) => {
-        if (prevSelectedPawn) {
-            prevSelectedPawn.style.backgroundColor = prevSelectedPawnBgColor
+    // Function to toggle the background color of a selected pawn box
+    var toggleBackgroundColor = (box) => { 
+        if (selectedBox) {
+            selectedBox.style.backgroundColor = selectedBox.previousColor;
         }
-        var box = document.getElementsByClassName(className)[0]
-        prevSelectedPawnBgColor = box.style.backgroundColor
-        box.style.backgroundColor = '#70CAE0'
-
-
-        prevSelectedPawn = box;
+        // const newColor = box.style.backgroundColor === 'white' ? '#70CAE0' : 'white';
+        const newColor = '#70CAE0';
+        box.previousColor = box.style.backgroundColor;
+        box.style.backgroundColor = newColor;
+        setSelectedBox(box);
     }
 
+    var chessboard = [];
+    // show chess board UI
     for (let row = 1; row <= rows; row++) {
         for (let col = 1; col <= cols; col++) {
             const boxClassName = `box${row}${col}`
-            const box = <div className={`${boxClassName} box-size`}
-                key={boxClassName}
-                style={{
-                    borderTopLeftRadius: `${col === 1 && row === 1 ? '5px' : ''}`,
-                    borderTopRightRadius: `${col === 8 && row === 1 ? '5px' : ''}`,
-                    borderBottomLeftRadius: `${col === 1 && row === 8 ? '5px' : ''}`,
-                    borderBottomRightRadius: `${col === 8 && row === 8 ? '5px' : ''}`,
-                    backgroundColor: `${temp % 2 === 0 ? '#e9edcc' : '#779954'}`
-                }}
-                onClick={(e) => { setPawn(boxClassName, e) }}
-            >
-                {/* {row}{col} */}
-            </div>
+            const backgroundColor = (row + col) % 2 === 0 ? '#779954' : '#e9edcc';
+            const boxStyle = {
+                borderTopLeftRadius: `${col === 1 && row === 1 ? '5px' : ''}`,
+                borderTopRightRadius: `${col === 8 && row === 1 ? '5px' : ''}`,
+                borderBottomLeftRadius: `${col === 1 && row === 8 ? '5px' : ''}`,
+                borderBottomRightRadius: `${col === 8 && row === 8 ? '5px' : ''}`,
+                backgroundColor: backgroundColor
+            }
 
+            const box = (
+                <div
+                    className={`${boxClassName} box-size`}
+                    key={boxClassName}
+                    style={boxStyle}
+                    onClick={(e) => toggleBackgroundColor(e.target)}
+                >
+                    {/* {row}{col} */}
+                </div>
+            )
             chessboard.push(box);
-            temp++;
         }
-        temp % 2 === 0 ? temp = 1 : temp = 0;
     }
 
     return (
@@ -52,5 +53,6 @@ function ShowChesssBoard() {
         </div>
     )
 }
+
 
 export default ShowChesssBoard
